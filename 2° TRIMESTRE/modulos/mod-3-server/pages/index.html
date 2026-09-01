@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage | Obrigado pela visita</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           MONSTER ENERGY DESIGN SYSTEM & ULTIMATE AESTHETICS
+           ============================================================ */
+        :root {
+            --monster-green: #00FF66;
+            --monster-green-neon: #00FF41;
+            --monster-green-dark: #00B33C;
+            --monster-green-glow: rgba(0, 255, 102, 0.45);
+            --bg-black: #060608;
+            --bg-dark: #0E0E12;
+            --bg-card: rgba(18, 18, 24, 0.88);
+            --bg-card-hover: rgba(26, 26, 36, 0.95);
+            --border-glow: rgba(0, 255, 102, 0.3);
+            --text-light: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --font-heading: 'Bebas Neue', sans-serif;
+            --font-accent: 'Teko', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* RESET & GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 255, 102, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(0, 255, 102, 0.06) 0%, transparent 45%),
+                linear-gradient(to bottom, rgba(6, 6, 8, 0.8), rgba(6, 6, 8, 0.98)),
+                url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="%23111116" fill-opacity="0.6" fill-rule="evenodd"><path d="M0 40L40 0H20L0 20M40 40V20L20 40"/></g></svg>');
+        }
+
+        /* SELECTION & SCROLLBAR */
+        ::selection {
+            background: var(--monster-green);
+            color: var(--bg-black);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2228;
+            border-radius: 5px;
+            border: 2px solid var(--bg-black);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--monster-green);
+            box-shadow: 0 0 12px var(--monster-green);
+        }
+
+        /* AMBIENT GLOW BACKDROP */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(circle at 50% -10%, rgba(0, 255, 102, 0.16), transparent 60%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .text-green {
+            color: var(--monster-green);
+            text-shadow: 0 0 12px var(--monster-green-glow);
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(0, 255, 102, 0.08);
+            border: 1px solid var(--border-glow);
+            border-radius: 50px;
+            color: var(--monster-green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
+        }
+
+        /* ============================================================
+           HEADER & NAVIGATION BAR
+           ============================================================ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(6, 6, 8, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition-fast);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        /* MONSTER CLAW LOGO */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .claw-icon-svg {
+            width: 40px;
+            height: 46px;
+            filter: drop-shadow(0 0 10px var(--monster-green));
+            transition: var(--transition-bounce);
+        }
+
+        .brand-logo:hover .claw-icon-svg {
+            transform: scale(1.14) rotate(-5deg);
+            filter: drop-shadow(0 0 18px var(--monster-green-neon));
+        }
+
+        .brand-text {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text span:last-child {
+            font-size: 0.72rem;
+            font-family: var(--font-body);
+            color: var(--monster-green);
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        /* NAV LINKS */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--monster-green);
+            box-shadow: 0 0 10px var(--monster-green);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* HEADER ACTIONS */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .btn-sound-toggle {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--monster-green);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 1.1rem;
+        }
+
+        .btn-sound-toggle:hover {
+            background: var(--monster-green);
+            color: var(--bg-black);
+            box-shadow: 0 0 18px var(--monster-green-glow);
+            transform: scale(1.08);
+        }
+
+        .btn-header-cta {
+            background: linear-gradient(135deg, var(--monster-green) 0%, var(--monster-green-dark) 100%);
+            color: var(--bg-black);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            padding: 10px 26px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-weight: 900;
+            transition: var(--transition-fast);
+            box-shadow: 0 0 18px rgba(0, 255, 102, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .btn-header-cta:hover {
+            box-shadow: 0 0 28px var(--monster-green);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           HERO SECTION - PRESERVED ROUTE CONTENT
+           ============================================================ */
+        .hero-section {
+            padding: 5rem 0 6rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .route-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid var(--monster-green);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            color: var(--monster-green);
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        /* PRESERVED H3 ROUTE REQUIREMENT: Página inicial */
+        .route-h3-hidden {
+            display: none;
+        }
+
+        .route-heading {
+            font-family: var(--font-heading);
+            font-size: 5.2rem;
+            line-height: 0.95;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .route-heading span.gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--monster-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 102, 0.35);
+        }
+
+        /* PRESERVED PARAGRAPH ROUTE REQUIREMENT: olá, você esta em casa! */
+        .route-subtitle {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--monster-green);
+            font-family: var(--font-accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+            max-width: 580px;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* ACTION BUTTONS */
+        .hero-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--monster-green) 0%, var(--monster-green-dark) 100%);
+            color: var(--bg-black);
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            padding: 16px 38px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            font-weight: 900;
+            transition: var(--transition-fast);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 35px var(--monster-green);
+            background: var(--monster-green-neon);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            padding: 15px 34px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--monster-green);
+            color: var(--monster-green);
+            background: rgba(0, 255, 102, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* STATS COUNTER BAR */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-item h4 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            color: var(--monster-green);
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* HERO STAGE & 3D MONSTER CAN */
+        .hero-stage {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .claw-bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 102, 0.25) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: 0;
+            animation: pulseGlow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.4; transform: scale(0.95); }
+            100% { opacity: 0.85; transform: scale(1.1); }
+        }
+
+        .can-card-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 255, 102, 0.15);
+            transition: var(--transition-bounce);
+        }
+
+        .can-card-wrapper:hover {
+            transform: translateY(-8px) rotateY(4deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(0, 255, 102, 0.3);
+            border-color: var(--monster-green);
+        }
+
+        .can-container {
+            position: relative;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .monster-can-svg {
+            height: 350px;
+            width: auto;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+            animation: floatCan 6s infinite ease-in-out;
+        }
+
+        @keyframes floatCan {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .energy-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--monster-green);
+            color: var(--monster-green);
+            font-family: var(--font-accent);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px var(--monster-green-glow);
+        }
+
+        .can-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2.3rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .can-info p {
+            color: var(--monster-green);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           PRODUCT SHOWCASE SECTION
+           ============================================================ */
+        .products-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* PRODUCT CATEGORY FILTERS */
+        .filter-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            padding: 8px 26px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--monster-green);
+            color: var(--bg-black);
+            border-color: var(--monster-green);
+            box-shadow: 0 0 16px var(--monster-green-glow);
+            font-weight: 700;
+        }
+
+        /* PRODUCT GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-bounce);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--monster-green);
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-glow);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 255, 102, 0.18);
+            background: var(--bg-card-hover);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-img-wrapper {
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-img-wrapper svg {
+            max-height: 240px;
+            width: auto;
+            transition: var(--transition-fast);
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+        }
+
+        .product-card:hover .product-img-wrapper svg {
+            transform: scale(1.08) rotate(-3deg);
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8)) drop-shadow(0 0 15px var(--monster-green-glow));
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 255, 102, 0.15);
+            color: var(--monster-green);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 2.1rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+            line-height: 1;
+        }
+
+        .product-flavour {
+            color: var(--monster-green);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .volume-badge {
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .btn-quick-view {
+            background: transparent;
+            border: 1px solid var(--monster-green);
+            color: var(--monster-green);
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            padding: 6px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            letter-spacing: 1px;
+        }
+
+        .btn-quick-view:hover {
+            background: var(--monster-green);
+            color: var(--bg-black);
+            box-shadow: 0 0 14px var(--monster-green-glow);
+        }
+
+        /* ============================================================
+           INTERACTIVE ENERGY CALCULATOR / BEAST MODE
+           ============================================================ */
+        .calculator-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 102, 0.03) 50%, transparent 100%);
+            position: relative;
+        }
+
+        .calc-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 3.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .calc-info h2 {
+            font-family: var(--font-heading);
+            font-size: 3.4rem;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .calc-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .select-custom {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .select-custom:focus {
+            border-color: var(--monster-green);
+            box-shadow: 0 0 12px var(--monster-green-glow);
+        }
+
+        .range-slider {
+            width: 100%;
+            accent-color: var(--monster-green);
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            display: flex;
+            justify-content: space-between;
+            color: var(--monster-green);
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            margin-top: 4px;
+        }
+
+        .calc-result-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px dashed var(--monster-green);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 320px;
+        }
+
+        .result-energy-bar {
+            width: 100%;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1.5rem 0 1rem;
+            position: relative;
+        }
+
+        .result-energy-fill {
+            height: 100%;
+            width: 85%;
+            background: linear-gradient(90deg, var(--monster-green-dark), var(--monster-green-neon));
+            box-shadow: 0 0 15px var(--monster-green);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .result-title {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            color: var(--monster-green);
+            line-height: 1.1;
+        }
+
+        .result-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ============================================================
+           FOOTER & COMMUNITY BANNER (OBRIGADO PELA VISITA)
+           ============================================================ */
+        .thank-you-banner {
+            padding: 4.5rem 0;
+            background: radial-gradient(circle at center, rgba(0, 255, 102, 0.12) 0%, rgba(6, 6, 8, 0.95) 70%);
+            border-top: 1px solid rgba(0, 255, 102, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .banner-content h2 {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-content p {
+            color: var(--monster-green);
+            font-family: var(--font-accent);
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 520px;
+            margin: 0 auto;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 20px;
+            border-radius: 4px;
+            color: #fff;
+            outline: none;
+            font-family: var(--font-body);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--monster-green);
+        }
+
+        .site-footer {
+            background: #030304;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--monster-green);
+            color: var(--bg-black);
+            box-shadow: 0 0 15px var(--monster-green-glow);
+            transform: translateY(-3px);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            width: 100%;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* MODAL POPUP FOR QUICK VIEW */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-fast);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--monster-green);
+            width: 90%;
+            max-width: 550px;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transform: scale(0.9);
+            transition: var(--transition-bounce);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--monster-green-glow);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .btn-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-modal-close:hover {
+            color: var(--monster-green);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .route-heading {
+                font-size: 3.8rem;
+            }
+
+            .hero-subtitle {
+                justify-content: center;
+            }
+
+            .hero-description {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-btn-group {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Backdrop -->
+    <div class="ambient-glow"></div>
+
+    <!-- ============================================================
+         SITE HEADER / NAVBAR
+         ============================================================ -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Monster Energy Claw Logo -->
+                <a href="#" class="brand-logo" title="Monster Energy Brasil">
+                    <!-- Clean SVG Monster Claw M -->
+                    <svg class="claw-icon-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 15 C 18 35, 12 75, 20 105 C 23 70, 28 35, 26 15 Z" fill="#00FF66" />
+                        <path d="M42 5 C 48 35, 40 85, 48 115 C 53 80, 58 35, 54 5 Z" fill="#00FF66" />
+                        <path d="M72 20 C 76 40, 70 70, 78 98 C 82 70, 85 40, 82 20 Z" fill="#00FF66" />
+                    </svg>
+                    <div class="brand-text">
+                        MONSTER
+                        <span>ENERGY</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active">PÁGINA INICIAL</a></li>
+                    <li><a href="#produtos" class="nav-link">PRODUTOS</a></li>
+                    <li><a href="#calculadora" class="nav-link">BEAST MODE</a></li>
+                    <li><a href="#visita" class="nav-link">COMUNIDADE</a></li>
+                </ul>
+
+                <!-- Header Action Buttons -->
+                <div class="header-actions">
+                    <button class="btn-sound-toggle" id="audioToggleBtn" title="Ativar Som Monster">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button class="btn-header-cta" onclick="scrollToSection('produtos')">
+                        <i class="fa-solid fa-bolt"></i> EXPERIMENTE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         HERO SECTION - FIRST FOLD (PRESERVED ROUTE CONTENT)
+         ============================================================ -->
+    <main>
+        <section class="hero-section container">
+            <div class="hero-content">
+                
+                <!-- ROUTE ORIGINAL HIGHLIGHT BADGE -->
+                <div class="route-badge">
+                    <i class="fa-solid fa-house"></i> MONSTER ENERGY HOMEPAGE
+                </div>
+
+                <!-- PRESERVED H3 ROUTE REQUIREMENT: Página inicial -->
+                <h3 class="route-h3-hidden">Página inicial</h3>
+                <h1 class="route-heading">
+                    PÁGINA <span class="gradient-text">INICIAL</span>
+                </h1>
+
+                <!-- PRESERVED PARAGRAPH ROUTE REQUIREMENT: olá, você esta em casa! -->
+                <div class="route-subtitle">
+                    <i class="fa-solid fa-claw-marks text-green"></i> OLÁ, VOCÊ ESTÁ EM CASA!
+                </div>
+
+                <p class="hero-description">
+                    Seja bem-vindo ao hub oficial da energia extrema. Você acabou de entrar no território 
+                    dos campeões, atletas, gamers e movidos a adrenalina pura. Desperte o seu máximo desempenho 
+                    e viva a experiência Monster Energy Drink.
+                </p>
+
+                <!-- HERO BUTTONS -->
+                <div class="hero-btn-group">
+                    <a href="#produtos" class="btn-primary">
+                        UNLEASH THE BEAST <i class="fa-solid fa-bolt"></i>
+                    </a>
+                    <a href="#calculadora" class="btn-secondary">
+                        CALCULAR ENERGIA <i class="fa-solid fa-calculator"></i>
+                    </a>
+                </div>
+
+                <!-- HERO QUICK STATS -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Adrenalina Pura</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>473ml</h4>
+                        <p>Lata de Impacto</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>+50</h4>
+                        <p>Países Conectados</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- HERO VISUAL STAGE - 3D FLOATING CAN -->
+            <div class="hero-stage">
+                <div class="claw-bg-glow"></div>
+                
+                <div class="can-card-wrapper">
+                    <span class="energy-badge"><i class="fa-solid fa-fire"></i> ULTRA HIGH ENERGY</span>
+                    
+                    <div class="can-container">
+                        <!-- High Definition SVG Monster Can Original -->
+                        <svg class="monster-can-svg" viewBox="0 0 160 340" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="canBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1A1A22" />
+                                    <stop offset="40%" stop-color="#0A0A0E" />
+                                    <stop offset="80%" stop-color="#121218" />
+                                    <stop offset="100%" stop-color="#050507" />
+                                </linearGradient>
+                                <linearGradient id="canRim" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#888899" />
+                                    <stop offset="50%" stop-color="#FFFFFF" />
+                                    <stop offset="100%" stop-color="#666677" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Can Rim Top -->
+                            <ellipse cx="80" cy="20" rx="65" ry="12" fill="url(#canRim)" />
+                            <ellipse cx="80" cy="18" rx="55" ry="8" fill="#22222A" />
+                            <!-- Can Main Body -->
+                            <rect x="15" y="20" width="130" height="280" rx="10" fill="url(#canBody)" stroke="#00FF66" stroke-width="1.5" />
+                            <!-- Metallic Shine -->
+                            <rect x="25" y="20" width="15" height="280" fill="#FFFFFF" opacity="0.08" />
+                            <!-- Iconic Monster Claw SVG on Can -->
+                            <g transform="translate(48, 80) scale(0.65)">
+                                <path d="M15 15 C 18 45, 12 105, 20 155 C 25 105, 32 45, 28 15 Z" fill="#00FF66" filter="drop-shadow(0 0 8px #00FF66)"/>
+                                <path d="M48 5 C 55 45, 45 125, 55 175 C 62 125, 68 45, 62 5 Z" fill="#00FF66" filter="drop-shadow(0 0 10px #00FF66)"/>
+                                <path d="M85 25 C 90 55, 82 95, 92 145 C 96 95, 100 55, 96 25 Z" fill="#00FF66" filter="drop-shadow(0 0 8px #00FF66)"/>
+                            </g>
+                            <!-- Text Branding on Can -->
+                            <text x="80" y="220" font-family="'Bebas Neue', sans-serif" font-size="22" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">MONSTER</text>
+                            <text x="80" y="240" font-family="'Montserrat', sans-serif" font-size="10" font-weight="bold" fill="#00FF66" text-anchor="middle" letter-spacing="4">ENERGY</text>
+                            <!-- Can Bottom -->
+                            <path d="M15 300 Q 80 325 145 300 L 135 320 Q 80 335 25 320 Z" fill="url(#canRim)" />
+                        </svg>
+                    </div>
+
+                    <div class="can-info">
+                        <h3>MONSTER ORIGINAL</h3>
+                        <p>Taurina + Cafeína + B-Vitamins</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PRODUCT SHOWCASE SECTION
+             ============================================================ -->
+        <section class="products-section" id="produtos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fa-solid fa-fire"></i> Sabor & Potência</span>
+                    <h2 class="section-title">LINHA MONSTER ENERGY</h2>
+                    <p class="section-desc">Escolha a fórmula ideal para impulsionar a sua rotina, treino ou maratona de jogos.</p>
+                </div>
+
+                <!-- CATEGORY FILTER TABS -->
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterProducts('all')">TODOS OS SABORES</button>
+                    <button class="filter-btn" onclick="filterProducts('original')">ORIGINAL</button>
+                    <button class="filter-btn" onclick="filterProducts('zero')">ULTRA ZERO</button>
+                    <button class="filter-btn" onclick="filterProducts('juice')">JUICE & TROPICAL</button>
+                </div>
+
+                <!-- PRODUCTS GRID -->
+                <div class="products-grid" id="productsGrid">
+                    
+                    <!-- Card 1: Monster Original -->
+                    <div class="product-card" data-category="original">
+                        <span class="product-tag">CLÁSSICO</span>
+                        <div class="product-img-wrapper">
+                            <svg viewBox="0 0 160 300" width="130">
+                                <rect x="20" y="20" width="120" height="260" rx="10" fill="#111116" stroke="#00FF66" stroke-width="2"/>
+                                <g transform="translate(48, 60) scale(0.65)">
+                                    <path d="M15 15 C 18 45, 12 105, 20 155 C 25 105, 32 45, 28 15 Z" fill="#00FF66"/>
+                                    <path d="M48 5 C 55 45, 45 125, 55 175 C 62 125, 68 45, 62 5 Z" fill="#00FF66"/>
+                                    <path d="M85 25 C 90 55, 82 95, 92 145 C 96 95, 100 55, 96 25 Z" fill="#00FF66"/>
+                                </g>
+                                <text x="80" y="200" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#FFF" text-anchor="middle">ORIGINAL</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="product-title">MONSTER ENERGY</h3>
+                            <div class="product-flavour">Sabor Tradicional Intenso</div>
+                            <p class="product-desc">O sabor único e marcante com a combinação secreta da nossa mistura de energia máxima.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="volume-badge">473 ML</span>
+                            <button class="btn-quick-view" onclick="openModal('Monster Energy Original', 'O combo definitivo de sabor suave e descarga de energia para libertar a fera que existe em você.')">DETALHES</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Monster Ultra Paradise -->
+                    <div class="product-card" data-category="zero">
+                        <span class="product-tag">ZERO AÇÚCAR</span>
+                        <div class="product-img-wrapper">
+                            <svg viewBox="0 0 160 300" width="130">
+                                <rect x="20" y="20" width="120" height="260" rx="10" fill="#0F2418" stroke="#00FF99" stroke-width="2"/>
+                                <g transform="translate(48, 60) scale(0.65)">
+                                    <path d="M15 15 C 18 45, 12 105, 20 155 C 25 105, 32 45, 28 15 Z" fill="#00FF99"/>
+                                    <path d="M48 5 C 55 45, 45 125, 55 175 C 62 125, 68 45, 62 5 Z" fill="#00FF99"/>
+                                    <path d="M85 25 C 90 55, 82 95, 92 145 C 96 95, 100 55, 96 25 Z" fill="#00FF99"/>
+                                </g>
+                                <text x="80" y="200" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#FFF" text-anchor="middle">ULTRA PARADISE</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="product-title">ULTRA PARADISE</h3>
+                            <div class="product-flavour">Kiwi, Lima & Pepino</div>
+                            <p class="product-desc">Refrescante, leve e com zero açúcar. Uma verdadeira fuga tropical para o seu dia a dia.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="volume-badge">473 ML</span>
+                            <button class="btn-quick-view" onclick="openModal('Monster Ultra Paradise', 'Zero açúcar, zero calorias com sabor refrescante de Kiwi e Lima.')">DETALHES</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Monster Mango Loco -->
+                    <div class="product-card" data-category="juice">
+                        <span class="product-tag">JUICE LINE</span>
+                        <div class="product-img-wrapper">
+                            <svg viewBox="0 0 160 300" width="130">
+                                <rect x="20" y="20" width="120" height="260" rx="10" fill="#1C182A" stroke="#FF7700" stroke-width="2"/>
+                                <g transform="translate(48, 60) scale(0.65)">
+                                    <path d="M15 15 C 18 45, 12 105, 20 155 C 25 105, 32 45, 28 15 Z" fill="#FF7700"/>
+                                    <path d="M48 5 C 55 45, 45 125, 55 175 C 62 125, 68 45, 62 5 Z" fill="#FF7700"/>
+                                    <path d="M85 25 C 90 55, 82 95, 92 145 C 96 95, 100 55, 96 25 Z" fill="#FF7700"/>
+                                </g>
+                                <text x="80" y="200" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#FFF" text-anchor="middle">MANGO LOCO</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="product-title">MANGO LOCO</h3>
+                            <div class="product-flavour">Manga Tropical & Suco Real</div>
+                            <p class="product-desc">Uma mistura mística de sucos tropicais com a atração lendária da magia do Dia dos Mortos.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="volume-badge">473 ML</span>
+                            <button class="btn-quick-view" onclick="openModal('Monster Mango Loco', 'Enriquecido com suco de manga de verdade e sabor exótico singular.')">DETALHES</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Monster Ultra Violet -->
+                    <div class="product-card" data-category="zero">
+                        <span class="product-tag">ZERO AÇÚCAR</span>
+                        <div class="product-img-wrapper">
+                            <svg viewBox="0 0 160 300" width="130">
+                                <rect x="20" y="20" width="120" height="260" rx="10" fill="#200B2B" stroke="#B026FF" stroke-width="2"/>
+                                <g transform="translate(48, 60) scale(0.65)">
+                                    <path d="M15 15 C 18 45, 12 105, 20 155 C 25 105, 32 45, 28 15 Z" fill="#B026FF"/>
+                                    <path d="M48 5 C 55 45, 45 125, 55 175 C 62 125, 68 45, 62 5 Z" fill="#B026FF"/>
+                                    <path d="M85 25 C 90 55, 82 95, 92 145 C 96 95, 100 55, 96 25 Z" fill="#B026FF"/>
+                                </g>
+                                <text x="80" y="200" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#FFF" text-anchor="middle">ULTRA VIOLET</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="product-title">ULTRA VIOLET</h3>
+                            <div class="product-flavour">Uva Citrus Retro Style</div>
+                            <p class="product-desc">Vibe psicodélica dos anos 70 com sabor cítrico de uva e a carga clássica Monster.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="volume-badge">473 ML</span>
+                            <button class="btn-quick-view" onclick="openModal('Monster Ultra Violet', 'Leve, doce e cítrico com sabor inconfundível de uva zero açúcar.')">DETALHES</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             BEAST MODE / INTERACTIVE ENERGY CALCULATOR
+             ============================================================ -->
+        <section class="calculator-section" id="calculadora">
+            <div class="container">
+                <div class="calc-wrapper">
+                    <div class="calc-info">
+                        <span class="section-tag"><i class="fa-solid fa-gauge-high"></i> Simulador Beast Mode</span>
+                        <h2>QUAL O SEU NÍVEL DE ADRENALINA HOJE?</h2>
+                        <p>Selecione a sua atividade e tempo estimado de foco para descobrir a recomendação ideal de energia Monster.</p>
+
+                        <div class="form-group">
+                            <label class="form-label">Sua Atividade Principal:</label>
+                            <select class="select-custom" id="activitySelect" onchange="calculateBeastMode()">
+                                <option value="gaming">Pro Gaming / Esports (Maratona Rankeada)</option>
+                                <option value="workout">Treino Intenso / Musculação & Crossfit</option>
+                                <option value="work">Trabalho Criativo & Programação Noturna</option>
+                                <option value="extreme">Esportes Extremos / Skate & Motocross</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Horas Necessárias de Foco Total:</label>
+                            <input type="range" class="range-slider" id="hoursSlider" min="2" max="12" value="6" oninput="calculateBeastMode()">
+                            <div class="slider-value">
+                                <span>2 Horas</span>
+                                <span id="sliderDisplayValue">6 Horas</span>
+                                <span>12 Horas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-result-box">
+                        <i class="fa-solid fa-bolt-lightning text-green" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <div class="result-title" id="resultTitle">MONSTER ULTRA ZERO</div>
+                        <div class="result-sub" id="resultSub">Foco sustentado sem queda de açúcar por 6 horas ativas.</div>
+                        
+                        <div class="result-energy-bar">
+                            <div class="result-energy-fill" id="energyFill"></div>
+                        </div>
+
+                        <span class="energy-badge" style="position: static; margin-top: 10px;" id="energyPercentage">NÍVEL BEAST: 85%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             THANK YOU & COMMUNITY SECTION (OBRIGADO PELA VISITA)
+             ============================================================ -->
+        <section class="thank-you-banner" id="visita">
+            <div class="container">
+                <div class="banner-content">
+                    <i class="fa-solid fa-heart-pulse text-green" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                    <h2>OBRIGADO PELA VISITA!</h2>
+                    <p>Você é parte da família Monster Energy. Fique por dentro de prêmios e novidades exclusivas.</p>
+
+                    <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+                        <input type="email" class="newsletter-input" placeholder="Digite seu melhor e-mail..." required>
+                        <button type="submit" class="btn-primary" style="padding: 12px 28px; font-size: 1.15rem;">
+                            INSCREVER-SE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <a href="#" class="brand-logo">
+                    <svg class="claw-icon-svg" viewBox="0 0 100 120" style="width:28px; height:34px;">
+                        <path d="M15 15 C 18 35, 12 75, 20 105 C 23 70, 28 35, 26 15 Z" fill="#00FF66" />
+                        <path d="M42 5 C 48 35, 40 85, 48 115 C 53 80, 58 35, 54 5 Z" fill="#00FF66" />
+                        <path d="M72 20 C 76 40, 70 70, 78 98 C 82 70, 85 40, 82 20 Z" fill="#00FF66" />
+                    </svg>
+                    <div class="brand-text" style="font-size: 1.4rem;">
+                        MONSTER
+                        <span>ENERGY</span>
+                    </div>
+                </a>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/monsterenergy" target="_blank" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/monsterenergy" target="_blank" class="social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.twitch.tv" target="_blank" class="social-link" title="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="https://twitter.com/monsterenergy" target="_blank" class="social-link" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                Monster Energy Company © 2026. Todos os direitos reservados. | Desenvolvido com tecnologia de alta energia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         MODAL QUICK VIEW
+         ============================================================ -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-card">
+            <button class="btn-modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="section-tag"><i class="fa-solid fa-circle-info"></i> Informações Nutricionais</div>
+            <h2 class="section-title" id="modalTitle" style="font-size: 2.5rem; margin-top: 10px;">MONSTER PRODUCT</h2>
+            <p id="modalDescription" style="color: var(--text-muted); margin: 1rem 0 1.5rem;">Descrição do produto aqui.</p>
+            <div style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.9rem;">
+                    <span>Cafeína:</span> <strong style="color: var(--monster-green);">160 mg / lata</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.9rem;">
+                    <span>Taurina:</span> <strong style="color: var(--monster-green);">1000 mg</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                    <span>Vitamins:</span> <strong style="color: var(--monster-green);">B3, B6, B2, B12</strong>
+                </div>
+            </div>
+            <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="closeModal()">FECHAR E LIBERTAR A FERA</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         INTERACTIVE JAVASCRIPT LOGIC
+         ============================================================ -->
+    <script>
+        // AUDIO SYNTHESIZER (Unleash Sound Effect on interaction)
+        let soundEnabled = true;
+        
+        function playBeastSound() {
+            if (!soundEnabled) return;
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(110, audioCtx.currentTime); // Low roar frequency
+                osc.frequency.exponentialRampToValueAtTime(330, audioCtx.currentTime + 0.3);
+                
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch(e) {
+                console.log("Audio not allowed yet");
+            }
+        }
+
+        // TOGGLE SOUND
+        document.getElementById('audioToggleBtn').addEventListener('click', function() {
+            soundEnabled = !soundEnabled;
+            this.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            if(soundEnabled) playBeastSound();
+        });
+
+        // FILTER PRODUCTS BY CATEGORY
+        function filterProducts(category) {
+            playBeastSound();
+            const cards = document.querySelectorAll('.product-card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    card.style.animation = 'fadeIn 0.4s ease forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // CALCULATE BEAST MODE RECOMMENDED MONSTER
+        function calculateBeastMode() {
+            const activity = document.getElementById('activitySelect').value;
+            const hours = document.getElementById('hoursSlider').value;
+            document.getElementById('sliderDisplayValue').innerText = `${hours} Horas`;
+
+            const title = document.getElementById('resultTitle');
+            const sub = document.getElementById('resultSub');
+            const fill = document.getElementById('energyFill');
+            const perc = document.getElementById('energyPercentage');
+
+            let fillWidth = Math.min(100, hours * 8.5 + 20);
+
+            if (activity === 'gaming') {
+                title.innerText = 'MONSTER ULTRA PARADISE';
+                sub.innerText = `Foco cirúrgico e hidratação zero açúcar para ${hours}h de game contínuo.`;
+            } else if (activity === 'workout') {
+                title.innerText = 'MONSTER ORIGINAL';
+                sub.innerText = `Carga pesada de Taurina e Cafeína para estourar os limites no treino.`;
+            } else if (activity === 'work') {
+                title.innerText = 'MONSTER ULTRA VIOLET';
+                sub.innerText = `Energia limpa constante sem queda de glicose durante ${hours}h de código e projetos.`;
+            } else if (activity === 'extreme') {
+                title.innerText = 'MONSTER MANGO LOCO';
+                sub.innerText = `Explosão de sabor tropical de suco de verdade e adrenalina total.`;
+            }
+
+            fill.style.width = `${fillWidth}%`;
+            perc.innerText = `NÍVEL BEAST: ${Math.round(fillWidth)}%`;
+        }
+
+        // MODAL HANDLERS
+        function openModal(name, desc) {
+            playBeastSound();
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalDescription').innerText = desc;
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        // SCROLL TO SECTION
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // NEWSLETTER FORM HANDLER
+        function handleSubscribe(e) {
+            e.preventDefault();
+            playBeastSound();
+            alert("🔥 BEM-VINDO À FAMÍLIA MONSTER! SEU CADASTRO FOI REALIZADO COM SUCESSO.");
+            e.target.reset();
+        }
+
+        // INITIAL CALCULATION ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateBeastMode();
+        });
+    </script>
+</body>
+</html>
